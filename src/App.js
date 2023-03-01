@@ -1,18 +1,12 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Navs from "./components/Navs";
 import Home from "./pages/Home";
 import Starred from "./pages/Starred";
 
 function App() {
   return(
-  <div>
-
-    <Navs/>
-
-
-    <Switch>
+  <Switch>
     <Route exact path="/">
       <Home />
     </Route>
@@ -25,7 +19,6 @@ function App() {
        <div>Not Found</div>
     </Route>
   </Switch>
-  </div>
   ); 
 }
 
