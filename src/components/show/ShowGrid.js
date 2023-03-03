@@ -1,24 +1,36 @@
-import React from 'react'
-import ShowCard from './ShowCard';
+import React from 'react';
 
-import { FlexGrid } from '../styled';
+import IMG_PLACEHOLDER from '../../images/not-found.png';
+import { Star } from '../styled';
+import { MainDataWrapper, Headline, TagList } from './ShowMainData.styled';
 
-import IMAGE_NOT_FOUND from '../../images/not-found.png';
+const ShowMainData = ({ name, rating, summary, tags, image }) => {
+  return (
+    <MainDataWrapper>
+      <img src={image ? image.original : IMG_PLACEHOLDER} alt="show-cover" />
+      <div className="text-side">
+        <Headline>
+          <h1>{name}</h1>
+          <div>
+            <Star active />
+            <span>{rating.average || 'N/A'}</span>
+          </div>
+        </Headline>
+        <div
+          className="summary"
+          dangerouslySetInnerHTML={{ __html: summary }}
+        />
 
-const ShowGrid = ({ data }) => {
-  return ( 
-  <FlexGrid>
-  {data.map( ({ show })=> (
-  <ShowCard
-   key={show.id}
-    id={show.id}
-    name={show.name}
-    image={show.image ? show.image.medium : IMAGE_NOT_FOUND }
-     summary={show.summary}
-     />
-    ))};
-    </FlexGrid>
-  );    
+        <div>
+          Tags:{' '}
+          <TagList>
+            {tags.map((tag, i) => (
+              <span key={i}>{tag}</span>
+            ))}
+          </TagList>
+        </div>
+      </div>
+    </MainDataWrapper>
+  );
 };
-
-export default ShowGrid;
+export default ShowMainData;

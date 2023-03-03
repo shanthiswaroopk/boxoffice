@@ -22,12 +22,12 @@ return persisted ? JSON.parse(persisted) : initial;
 });
 
 useEffect(() => {
-localStorage.setItem(key, JSON.stringify(state))
-},[state, key]);
+localStorage.setItem(key, JSON.stringify(state));
+}, [state, key]);
 
 return [state, dispatch];
 }
 
  export function useShows(key = 'shows') {
-    return usePersistedReducer(showsReducer, [], key );
+   return usePersistedReducer(showsReducer, [], key );
 }
