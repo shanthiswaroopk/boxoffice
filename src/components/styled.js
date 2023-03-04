@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
+import FadeIn from "react-fade-in/lib/FadeIn";
 import styled from "styled-components"; 
 
- export const FlexGrid = styled.div`
+ export const FlexGrid = styled(FadeIn)`
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
