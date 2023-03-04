@@ -5,7 +5,7 @@ import MainPageLayout from '../components/MainPageLayout';
 import ShowGrid from '../components/show/ShowGrid';
 import { apiGet } from '../misc/config';
 import { useLastQuery } from '../misc/custom-hooks';
-import { RadioInputsWrapper, SearchButtonWrapper, SearchInput } from './Home.styled';
+import {  SearchInput, RadioInputsWrapper, SearchButtonWrapper} from './Home.styled';
 
 const Home = () => {
   const [input, setInput] = useLastQuery();
@@ -13,9 +13,7 @@ const Home = () => {
   const [searchOption, setSearchOption] = useState('shows');
   
   const isShowsSearch = searchOption === 'shows';
-
-
-  const onSearch =() => {
+  const onSearch = () => {
     apiGet(`/search/${searchOption}?q=${input}`).then(result => {
       setResults(result); 
      });
@@ -23,18 +21,19 @@ const Home = () => {
   const onInputChange = ev => {
     setInput (ev.target.value);
   };
-  const onKeyDown = (ev) => {
+  const onKeyDown = ev => {
    if(ev.keyCode === 13) {
-    onSearch()
+    onSearch();
    }
   }; 
   
-  const onRadioChange = (ev) => {
-   setSearchOption(ev.target.value)
-  }
+  const onRadioChange = ev => {
+   setSearchOption(ev.target.value);
+  };
+
   const renderResults = () => {
     if(results && results.length === 0) {
-     return <div>No results</div>
+     return <div>No results</div>;
     }
 
     if(results && results.length > 0) {
@@ -59,7 +58,6 @@ const Home = () => {
       />
        <RadioInputsWrapper>
        <div>
-
          <CustomRadio 
          label="Shows"
          id="shows-search" 
@@ -85,7 +83,7 @@ const Home = () => {
         Search
       </button> 
       </SearchButtonWrapper>
-      {renderResults() } 
+      {renderResults()} 
     </MainPageLayout>
   );
 };
